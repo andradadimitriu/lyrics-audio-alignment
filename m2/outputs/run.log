@@ -1,0 +1,75 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+alignment device: mps
+running on 20 songs: ['HILA_-_Give_Me_the_Same', 'Quentin_Hannappe_-_Keep_On', 'Songwriterz_-_Back_In_Time', 'Kinematic_-_Peyote', 'Avercage_-_Embers', 'Color_Out_-_Falling_Star', 'The.madpix.project_-_One_Way_Street', 'Wordsmith_-_The_Statement', 'JASON_MILLER_-_CROWD_PLEASER', 'Lower_Loveday_-_Is_It_Right_', 'Pure_Mids_-_The_Leader', 'Ridgway_-_Fire_Inside', 'Moon_I_Mean_-_Wrong_Concept', 'Slingshot_Miracle_-_Whistler', 'The_Rinn_-_Voices__2017_Version_', 'Rxbyn_-_Bad_Side', 'Tom_Orlando_-_The_One__feat._Tina_G_', 'LUNABLIND_-_Vision__Radio_Edit_', 'Explosive_Ear_Candy_-_Like_The_Sun', 'Cortez_-_Feel__Stripped_']
+  [aligner] loading facebook/wav2vec2-base-960h on mps ...
+Loading weights:   0%|          | 0/212 [00:00<?, ?it/s]Loading weights: 100%|██████████| 212/212 [00:00<00:00, 44822.69it/s]
+[transformers] [1mWav2Vec2ForCTC LOAD REPORT[0m from: facebook/wav2vec2-base-960h
+Key                        | Status  | 
+---------------------------+---------+-
+wav2vec2.masked_spec_embed | MISSING | 
+
+Notes:
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+[HILA_-_Give_Me_the_Same]
+  322 words to align
+  MAE=0.110s  MedAE=0.056s  PCO0.3=0.929  PCO0.2=0.888  (322/322 aligned)
+[Quentin_Hannappe_-_Keep_On]
+  175 words to align
+  MAE=0.162s  MedAE=0.036s  PCO0.3=0.971  PCO0.2=0.966  (175/175 aligned)
+[Songwriterz_-_Back_In_Time]
+  238 words to align
+  MAE=0.065s  MedAE=0.037s  PCO0.3=0.983  PCO0.2=0.929  (238/238 aligned)
+[Kinematic_-_Peyote]
+  147 words to align
+  MAE=0.625s  MedAE=0.051s  PCO0.3=0.891  PCO0.2=0.864  (147/147 aligned)
+[Avercage_-_Embers]
+  189 words to align
+  MAE=0.818s  MedAE=0.159s  PCO0.3=0.672  PCO0.2=0.587  (189/189 aligned)
+[Color_Out_-_Falling_Star]
+  224 words to align
+  MAE=0.209s  MedAE=0.148s  PCO0.3=0.911  PCO0.2=0.728  (224/224 aligned)
+[The.madpix.project_-_One_Way_Street]
+  183 words to align
+  MAE=0.228s  MedAE=0.039s  PCO0.3=0.984  PCO0.2=0.929  (183/183 aligned)
+[Wordsmith_-_The_Statement]
+  581 words to align
+  MAE=0.050s  MedAE=0.043s  PCO0.3=0.998  PCO0.2=0.995  (581/581 aligned)
+[JASON_MILLER_-_CROWD_PLEASER]
+  521 words to align
+  MAE=0.052s  MedAE=0.041s  PCO0.3=0.990  PCO0.2=0.983  (521/521 aligned)
+[Lower_Loveday_-_Is_It_Right_]
+  212 words to align
+  MAE=0.154s  MedAE=0.064s  PCO0.3=0.962  PCO0.2=0.929  (212/212 aligned)
+[Pure_Mids_-_The_Leader]
+  114 words to align
+  MAE=2.846s  MedAE=0.142s  PCO0.3=0.596  PCO0.2=0.526  (114/114 aligned)
+[Ridgway_-_Fire_Inside]
+  304 words to align
+  MAE=0.605s  MedAE=0.054s  PCO0.3=0.882  PCO0.2=0.832  (304/304 aligned)
+[Moon_I_Mean_-_Wrong_Concept]
+  272 words to align
+  MAE=0.095s  MedAE=0.048s  PCO0.3=0.974  PCO0.2=0.930  (272/272 aligned)
+[Slingshot_Miracle_-_Whistler]
+  162 words to align
+  MAE=0.082s  MedAE=0.052s  PCO0.3=0.981  PCO0.2=0.907  (162/162 aligned)
+[The_Rinn_-_Voices__2017_Version_]
+  203 words to align
+  MAE=0.164s  MedAE=0.044s  PCO0.3=0.901  PCO0.2=0.867  (203/203 aligned)
+[Rxbyn_-_Bad_Side]
+  440 words to align
+  MAE=0.108s  MedAE=0.058s  PCO0.3=0.941  PCO0.2=0.905  (440/440 aligned)
+[Tom_Orlando_-_The_One__feat._Tina_G_]
+  498 words to align
+  MAE=1.294s  MedAE=0.046s  PCO0.3=0.821  PCO0.2=0.807  (498/498 aligned)
+[LUNABLIND_-_Vision__Radio_Edit_]
+  288 words to align
+  MAE=0.077s  MedAE=0.047s  PCO0.3=0.986  PCO0.2=0.976  (288/288 aligned)
+[Explosive_Ear_Candy_-_Like_The_Sun]
+  265 words to align
+  MAE=0.423s  MedAE=0.047s  PCO0.3=0.970  PCO0.2=0.951  (265/265 aligned)
+[Cortez_-_Feel__Stripped_]
+  355 words to align
+  MAE=0.091s  MedAE=0.068s  PCO0.3=0.975  PCO0.2=0.910  (355/355 aligned)
+
+Done in 211.1s. Aggregate: {'MAE': 0.4129250148205098, 'MedAE': 0.0640370434079502, 'PCO_03': 0.9159816526242812, 'PCO_02': 0.8704276397408713, 'n_songs': 20}
+wrote outputs/results.json
