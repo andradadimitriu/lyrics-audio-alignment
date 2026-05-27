@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# OS
+.DS_Store
+
+# Project data — never commit
+dali/
+jamendolyrics/
+checkpoints/
+manifests/
+outputs/
+outputs_*/
+logs/
+
+# Downloader artifacts
+dali_audio_downloader/audio/
+dali_audio_downloader/vocals/
+dali_audio_downloader/candidates.json
+dali_audio_downloader/manifest.json
+dali_audio_downloader/logs/
+
+# Editor
+.idea/
+.vscode/
