@@ -2,8 +2,6 @@
 
 University POLITEHNICA of Bucharest — Hasan Khadra, Dimitriu Andrada-Elena.
 
-End-to-end writeup with numbers, design choices, and per-checkpoint deltas in [`SUMMARY.md`](SUMMARY.md).
-
 ## Pipeline
 
 ```
@@ -143,8 +141,7 @@ selected song's time window.
 
 ## Results
 
-Full per-checkpoint MAE table, training trajectories, and per-song deltas are
-in [`SUMMARY.md`](SUMMARY.md). Headline (15-song JamendoLyrics test):
+Headline (15-song JamendoLyrics English test set):
 
 | Variant | Test MAE | All-20 MAE |
 | --- | ---: | ---: |
