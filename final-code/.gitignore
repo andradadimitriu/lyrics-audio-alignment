@@ -18,12 +18,15 @@ outputs/
 outputs_*/
 logs/
 
-# Downloader artifacts
-dali_audio_downloader/audio/
-dali_audio_downloader/vocals/
-dali_audio_downloader/candidates.json
-dali_audio_downloader/manifest.json
-dali_audio_downloader/logs/
+# Downloader artifacts (v1 and v2)
+dali_audio_downloader*/audio/
+dali_audio_downloader*/vocals/
+dali_audio_downloader*/candidates.json
+dali_audio_downloader*/manifest*.json
+dali_audio_downloader*/logs/
+dali_audio_downloader*/__pycache__/
+dali_audio_downloader*/.venv/
+dali_audio_downloader*/venv/
 
 # Editor
 .idea/

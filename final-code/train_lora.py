@@ -70,6 +70,11 @@ def train(args):
     # peft freezes everything except LoRA; manually unfreeze lm_head.
     for p in model.base_model.model.lm_head.parameters():
         p.requires_grad_(True)
+    if args.resume_from:
+        rckpt = torch.load(args.resume_from, map_location="cpu", weights_only=False)
+        _, unexpected = model.load_state_dict(rckpt["adapter_state"], strict=False)
+        print(f"[train_lora] resumed adapter from {args.resume_from} "
+              f"(unexpected={len(unexpected)})", flush=True)
     model.to(device)
     aligner.model = model  # so the validation aligner uses our LoRA-wrapped model
 
@@ -229,6 +234,8 @@ def main():
                     help="checkpoint filename prefix, e.g. 'checkpoint_v4'")
     ap.add_argument("--early-stop-patience", type=int, default=3,
                     help="stop after this many consecutive epochs without val improvement")
+    ap.add_argument("--resume-from", default=None,
+                    help="optional checkpoint to load adapter weights from (fresh optimizer)")
     args = ap.parse_args()
     train(args)
 
