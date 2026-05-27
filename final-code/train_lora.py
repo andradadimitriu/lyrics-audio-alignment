@@ -106,6 +106,8 @@ def train(args):
     autocast_dtype = (torch.bfloat16 if device == "mps"
                       else torch.float16 if device == "cuda" else None)
     global_step = 0
+    best_val = float("inf")
+    no_improve = 0
 
     # Baseline (pre-training) JL-val MAE — for a LoRA-wrapped model at init,
     # lora_B starts at zeros so the encoder behaves identically to the base.
@@ -162,7 +164,7 @@ def train(args):
         print(f"[train_lora] epoch {epoch}: train_loss={train_loss:.4f}  "
               f"jl_val_mae={val['mean']:.4f}s  ({elapsed:.1f}s)", flush=True)
 
-        ckpt_path = CKPT_DIR / f"checkpoint_epoch_{epoch}.pt"
+        ckpt_path = CKPT_DIR / f"{args.ckpt_prefix}_epoch_{epoch}.pt"
         torch.save({
             "epoch": epoch,
             "adapter_state": adapter_state_dict(model),
@@ -193,8 +195,19 @@ def train(args):
             "jl_val_mae_per_song": val["per_song"],
             "ckpt": str(ckpt_path),
         })
-        with open(CKPT_DIR / "history.json", "w") as f:
+        with open(CKPT_DIR / f"{args.ckpt_prefix}_history.json", "w") as f:
             json.dump({"baseline_jl_val_mae": base_val, "epochs": history}, f, indent=2)
+
+        # Early-stop
+        if val["mean"] < best_val - 1e-6:
+            best_val = val["mean"]
+            no_improve = 0
+        else:
+            no_improve += 1
+        if no_improve >= args.early_stop_patience:
+            print(f"[train_lora] STOPPING EARLY: no improvement in jl_val_mae for "
+                  f"{no_improve} consecutive epochs (best={best_val:.4f})", flush=True)
+            break
 
 
 def main():
@@ -212,6 +225,10 @@ def main():
     ap.add_argument("--jamendo", default="jamendolyrics")
     ap.add_argument("--n-jl-val", type=int, default=5)
     ap.add_argument("--smoke", action="store_true")
+    ap.add_argument("--ckpt-prefix", default="checkpoint",
+                    help="checkpoint filename prefix, e.g. 'checkpoint_v4'")
+    ap.add_argument("--early-stop-patience", type=int, default=3,
+                    help="stop after this many consecutive epochs without val improvement")
     args = ap.parse_args()
     train(args)
 
